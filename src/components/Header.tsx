@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,9 +37,11 @@ export function Header() {
               <Github className="h-4 w-4" />
               GitHub
             </Button>
-            <Button variant="default" size="sm">
-              Get Started
-            </Button>
+            <Link to="/search">
+              <Button variant="default" size="sm">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -69,9 +72,11 @@ export function Header() {
                   <Github className="h-4 w-4" />
                   GitHub
                 </Button>
-                <Button variant="default" size="sm">
-                  Get Started
-                </Button>
+                <Link to="/search">
+                  <Button variant="default" size="sm" className="w-full">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

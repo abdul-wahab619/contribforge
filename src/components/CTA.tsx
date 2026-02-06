@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function CTA() {
   return (
@@ -18,10 +19,12 @@ export function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl">
-              Get Started for Free
-              <ArrowRight className="h-5 w-5" />
-            </Button>
+            <Link to="/search">
+              <Button variant="hero" size="xl">
+                Get Started for Free
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </Link>
           </div>
 
           <p className="mt-6 text-sm text-muted-foreground">
