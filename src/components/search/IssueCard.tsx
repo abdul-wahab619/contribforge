@@ -1,6 +1,7 @@
 import { MessageSquare, ExternalLink } from "lucide-react";
 import type { GitHubIssue } from "@/lib/github";
 import { extractRepoFromUrl } from "@/lib/github";
+import { BookmarkButton } from "./BookmarkButton";
 
 interface IssueCardProps {
   issue: GitHubIssue;
@@ -18,24 +19,40 @@ function timeAgo(dateStr: string): string {
 
 export function IssueCard({ issue }: IssueCardProps) {
   const repoName = extractRepoFromUrl(issue.repository_url);
+  const [owner, repo] = repoName.split("/");
 
   return (
-    <a
-      href={issue.html_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block p-5 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300"
-    >
+    <div className="group block p-5 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300">
       {/* Repo name */}
-      <p className="text-xs text-muted-foreground mb-2 font-mono">{repoName}</p>
+      <div className="flex items-start justify-between gap-3 mb-2">
+        <p className="text-xs text-muted-foreground font-mono">{repoName}</p>
+        <div className="flex items-center gap-1">
+          <BookmarkButton
+            url={issue.html_url}
+            title={issue.title}
+            type="issue"
+            owner={owner}
+            repoName={repo}
+            issueNumber={issue.number}
+            labels={issue.labels.map((l) => ({ name: l.name, color: l.color }))}
+          />
+          <a href={issue.html_url} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
+      </div>
 
       {/* Title */}
-      <div className="flex items-start justify-between gap-3 mb-3">
+      <a
+        href={issue.html_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block mb-3"
+      >
         <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-relaxed">
           {issue.title}
         </h3>
-        <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 mt-0.5" />
-      </div>
+      </a>
 
       {/* Labels */}
       <div className="flex flex-wrap gap-1.5 mb-4">
@@ -70,6 +87,6 @@ export function IssueCard({ issue }: IssueCardProps) {
         </span>
         <span className="ml-auto">opened {timeAgo(issue.created_at)}</span>
       </div>
-    </a>
+    </div>
   );
 }
