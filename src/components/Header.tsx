@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Github, Menu, X } from "lucide-react";
+import { Github, Menu, X, LogIn, LayoutDashboard } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, loading } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
@@ -33,15 +35,28 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm" className="gap-2">
-              <Github className="h-4 w-4" />
-              GitHub
-            </Button>
-            <Link to="/search">
-              <Button variant="default" size="sm">
-                Get Started
-              </Button>
-            </Link>
+            {!loading && user ? (
+              <Link to="/dashboard">
+                <Button variant="default" size="sm" className="gap-2">
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to="/auth">
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <LogIn className="h-4 w-4" />
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/search">
+                  <Button variant="default" size="sm">
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -68,15 +83,28 @@ export function Header() {
                 Community
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button variant="ghost" size="sm" className="justify-start gap-2">
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </Button>
-                <Link to="/search">
-                  <Button variant="default" size="sm" className="w-full">
-                    Get Started
-                  </Button>
-                </Link>
+                {!loading && user ? (
+                  <Link to="/dashboard">
+                    <Button variant="default" size="sm" className="w-full gap-2">
+                      <LayoutDashboard className="h-4 w-4" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                ) : (
+                  <>
+                    <Link to="/auth">
+                      <Button variant="ghost" size="sm" className="w-full justify-start gap-2">
+                        <LogIn className="h-4 w-4" />
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link to="/search">
+                      <Button variant="default" size="sm" className="w-full">
+                        Get Started
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </nav>
           </div>

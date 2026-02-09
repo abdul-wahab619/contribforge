@@ -1,5 +1,6 @@
 import { Star, GitFork, Circle, ExternalLink } from "lucide-react";
 import type { GitHubRepo } from "@/lib/github";
+import { BookmarkButton } from "./BookmarkButton";
 
 interface RepoCardProps {
   repo: GitHubRepo;
@@ -37,15 +38,15 @@ const langColors: Record<string, string> = {
 
 export function RepoCard({ repo }: RepoCardProps) {
   return (
-    <a
-      href={repo.html_url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300"
-    >
+    <div className="group block p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300">
       {/* Header */}
       <div className="flex items-start justify-between gap-3 mb-3">
-        <div className="flex items-center gap-3 min-w-0">
+        <a
+          href={repo.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 min-w-0 flex-1"
+        >
           <img
             src={repo.owner.avatar_url}
             alt={repo.owner.login}
@@ -56,8 +57,22 @@ export function RepoCard({ repo }: RepoCardProps) {
               {repo.full_name}
             </h3>
           </div>
+        </a>
+        <div className="flex items-center gap-1">
+          <BookmarkButton
+            url={repo.html_url}
+            title={repo.full_name}
+            type="repo"
+            description={repo.description}
+            language={repo.language}
+            stars={repo.stargazers_count}
+            owner={repo.owner.login}
+            repoName={repo.name}
+          />
+          <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
         </div>
-        <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
       </div>
 
       {/* Description */}
@@ -105,6 +120,6 @@ export function RepoCard({ repo }: RepoCardProps) {
         </span>
         <span className="ml-auto">{timeAgo(repo.updated_at)}</span>
       </div>
-    </a>
+    </div>
   );
 }
