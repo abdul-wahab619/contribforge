@@ -3,6 +3,7 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { DashboardOverview } from "@/components/dashboard/DashboardOverview";
 import { BookmarksList } from "@/components/dashboard/BookmarksList";
+import ProfileSettings from "@/pages/ProfileSettings";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Dashboard() {
@@ -13,6 +14,7 @@ export default function Dashboard() {
     if (path === "/dashboard/bookmarks") return <BookmarksList />;
     if (path === "/dashboard/repos") return <BookmarksList filterType="repo" />;
     if (path === "/dashboard/issues") return <BookmarksList filterType="issue" />;
+    if (path === "/dashboard/profile") return <ProfileSettings />;
     return <DashboardOverview />;
   };
 
@@ -27,6 +29,7 @@ export default function Dashboard() {
               {path === "/dashboard/bookmarks" && "All Bookmarks"}
               {path === "/dashboard/repos" && "Saved Repositories"}
               {path === "/dashboard/issues" && "Saved Issues"}
+              {path === "/dashboard/profile" && "Profile Settings"}
               {path === "/dashboard" && "Dashboard"}
             </h1>
           </div>
