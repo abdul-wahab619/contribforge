@@ -4,11 +4,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Github, Mail, ArrowLeft, Loader2 } from "lucide-react";
+import { Mail, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Auth() {
-  const { user, loading, signIn, signUp, signInWithGitHub } = useAuth();
+  const { user, loading, signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
@@ -57,11 +57,6 @@ export default function Auth() {
     }
   };
 
-  const handleGitHub = async () => {
-    setError("");
-    const { error } = await signInWithGitHub();
-    if (error) setError(error.message);
-  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -97,25 +92,6 @@ export default function Auth() {
                 ? "Sign in to access your dashboard and bookmarks"
                 : "Start tracking your open source contributions"}
             </p>
-          </div>
-
-          {/* GitHub OAuth */}
-          <Button
-            variant="outline"
-            className="w-full gap-2"
-            onClick={handleGitHub}
-          >
-            <Github className="h-4 w-4" />
-            Continue with GitHub
-          </Button>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">or</span>
-            </div>
           </div>
 
           {/* Email Form */}
