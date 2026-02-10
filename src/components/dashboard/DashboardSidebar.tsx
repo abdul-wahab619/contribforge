@@ -20,6 +20,7 @@ import {
   Search,
   LogOut,
   User,
+  Settings,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -29,6 +30,7 @@ const navItems = [
   { title: "Repositories", icon: GitFork, path: "/dashboard/repos" },
   { title: "Issues", icon: AlertCircle, path: "/dashboard/issues" },
   { title: "Search", icon: Search, path: "/search" },
+  { title: "Profile Settings", icon: Settings, path: "/dashboard/profile" },
 ];
 
 export function DashboardSidebar() {
