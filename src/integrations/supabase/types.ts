@@ -62,6 +62,126 @@ export type Database = {
         }
         Relationships: []
       }
+      contribution_activity: {
+        Row: {
+          activity_date: string
+          commit_count: number | null
+          created_at: string
+          id: string
+          issue_count: number | null
+          pr_count: number | null
+          total_count: number | null
+          user_id: string
+        }
+        Insert: {
+          activity_date: string
+          commit_count?: number | null
+          created_at?: string
+          id?: string
+          issue_count?: number | null
+          pr_count?: number | null
+          total_count?: number | null
+          user_id: string
+        }
+        Update: {
+          activity_date?: string
+          commit_count?: number | null
+          created_at?: string
+          id?: string
+          issue_count?: number | null
+          pr_count?: number | null
+          total_count?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      contribution_sync: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          id: string
+          last_synced_at: string | null
+          sync_status: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          last_synced_at?: string | null
+          sync_status?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          last_synced_at?: string | null
+          sync_status?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      contributions: {
+        Row: {
+          additions: number | null
+          closed_at_gh: string | null
+          comments: number | null
+          created_at: string
+          created_at_gh: string | null
+          deletions: number | null
+          gh_id: string
+          id: string
+          labels: Json | null
+          merged_at_gh: string | null
+          repo_full_name: string
+          state: string | null
+          title: string
+          type: string
+          updated_at: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          additions?: number | null
+          closed_at_gh?: string | null
+          comments?: number | null
+          created_at?: string
+          created_at_gh?: string | null
+          deletions?: number | null
+          gh_id: string
+          id?: string
+          labels?: Json | null
+          merged_at_gh?: string | null
+          repo_full_name: string
+          state?: string | null
+          title: string
+          type: string
+          updated_at?: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          additions?: number | null
+          closed_at_gh?: string | null
+          comments?: number | null
+          created_at?: string
+          created_at_gh?: string | null
+          deletions?: number | null
+          gh_id?: string
+          id?: string
+          labels?: Json | null
+          merged_at_gh?: string | null
+          repo_full_name?: string
+          state?: string | null
+          title?: string
+          type?: string
+          updated_at?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

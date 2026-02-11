@@ -1,17 +1,22 @@
 import { useAuth } from "@/hooks/useAuth";
 import { useBookmarks } from "@/hooks/useBookmarks";
+import { useContributions, useSyncStatus } from "@/hooks/useContributions";
 import { BookmarkCard } from "./BookmarkCard";
-import { Bookmark, GitFork, AlertCircle, ArrowRight } from "lucide-react";
+import { ActivityHeatmap } from "./ActivityHeatmap";
+import { Bookmark, GitFork, AlertCircle, ArrowRight, GitPullRequest, GitCommit } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export function DashboardOverview() {
   const { user } = useAuth();
   const { data: bookmarks, isLoading } = useBookmarks();
+  const { data: contributions } = useContributions();
 
   const repoCount = bookmarks?.filter((b) => b.type === "repo").length ?? 0;
   const issueCount = bookmarks?.filter((b) => b.type === "issue").length ?? 0;
   const totalCount = bookmarks?.length ?? 0;
+  const prCount = contributions?.filter((c) => c.type === "pr").length ?? 0;
+  const commitCount = contributions?.filter((c) => c.type === "commit").length ?? 0;
   const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "there";
 
   const recentBookmarks = bookmarks?.slice(0, 6) ?? [];
@@ -29,7 +34,7 @@ export function DashboardOverview() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid sm:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <div className="p-5 rounded-xl border border-border bg-card/50">
           <div className="flex items-center gap-3 mb-2">
             <div className="p-2 rounded-lg bg-primary/10">
@@ -57,7 +62,28 @@ export function DashboardOverview() {
           </div>
           <p className="text-3xl font-bold text-foreground">{issueCount}</p>
         </div>
+        <div className="p-5 rounded-xl border border-border bg-card/50">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-primary/10">
+              <GitPullRequest className="h-4 w-4 text-primary" />
+            </div>
+            <span className="text-sm text-muted-foreground">Pull Requests</span>
+          </div>
+          <p className="text-3xl font-bold text-foreground">{prCount}</p>
+        </div>
+        <div className="p-5 rounded-xl border border-border bg-card/50">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-primary/10">
+              <GitCommit className="h-4 w-4 text-primary" />
+            </div>
+            <span className="text-sm text-muted-foreground">Commits</span>
+          </div>
+          <p className="text-3xl font-bold text-foreground">{commitCount}</p>
+        </div>
       </div>
+
+      {/* Activity Heatmap */}
+      <ActivityHeatmap />
 
       {/* Recent Bookmarks */}
       <div>
