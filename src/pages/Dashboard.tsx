@@ -3,6 +3,7 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { DashboardOverview } from "@/components/dashboard/DashboardOverview";
 import { BookmarksList } from "@/components/dashboard/BookmarksList";
+import { ContributionsList } from "@/components/dashboard/ContributionsList";
 import ProfileSettings from "@/pages/ProfileSettings";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -11,6 +12,7 @@ export default function Dashboard() {
   const path = location.pathname;
 
   const renderContent = () => {
+    if (path === "/dashboard/contributions") return <ContributionsList />;
     if (path === "/dashboard/bookmarks") return <BookmarksList />;
     if (path === "/dashboard/repos") return <BookmarksList filterType="repo" />;
     if (path === "/dashboard/issues") return <BookmarksList filterType="issue" />;
@@ -26,6 +28,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-4">
             <SidebarTrigger />
             <h1 className="text-sm font-semibold text-foreground">
+              {path === "/dashboard/contributions" && "Contributions"}
               {path === "/dashboard/bookmarks" && "All Bookmarks"}
               {path === "/dashboard/repos" && "Saved Repositories"}
               {path === "/dashboard/issues" && "Saved Issues"}

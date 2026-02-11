@@ -21,11 +21,13 @@ import {
   LogOut,
   User,
   Settings,
+  GitPullRequest,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navItems = [
   { title: "Overview", icon: LayoutDashboard, path: "/dashboard" },
+  { title: "Contributions", icon: GitPullRequest, path: "/dashboard/contributions" },
   { title: "All Bookmarks", icon: Bookmark, path: "/dashboard/bookmarks" },
   { title: "Repositories", icon: GitFork, path: "/dashboard/repos" },
   { title: "Issues", icon: AlertCircle, path: "/dashboard/issues" },
