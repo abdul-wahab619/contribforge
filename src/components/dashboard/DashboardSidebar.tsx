@@ -22,6 +22,7 @@ import {
   User,
   Settings,
   GitPullRequest,
+  ExternalLink,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -47,6 +48,7 @@ export function DashboardSidebar() {
 
   const displayName = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "User";
   const avatarUrl = user?.user_metadata?.avatar_url;
+  const githubUsername = user?.user_metadata?.user_name;
 
   return (
     <Sidebar>
@@ -95,6 +97,14 @@ export function DashboardSidebar() {
           </div>
         </div>
         <SidebarMenu>
+          {githubUsername && (
+            <SidebarMenuItem>
+              <SidebarMenuButton onClick={() => navigate(`/u/${githubUsername}`)}>
+                <ExternalLink className="h-4 w-4" />
+                <span>View Portfolio</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
           <SidebarMenuItem>
             <SidebarMenuButton onClick={handleSignOut}>
               <LogOut className="h-4 w-4" />

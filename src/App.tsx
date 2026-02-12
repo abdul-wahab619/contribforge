@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
+import Portfolio from "./pages/Portfolio";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
+            <Route path="/u/:username" element={<Portfolio />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
