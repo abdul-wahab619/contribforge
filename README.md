@@ -1,73 +1,166 @@
-# Welcome to your Lovable project
+# ContribForge
 
-## Project info
+ContribForge is an open-source platform designed to make discovering, tracking, and managing open-source contributions easier for developers.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Instead of jumping between GitHub tabs, issues, and notes, ContribForge helps you **find the right issues, save them, and track your contribution journey in one place**.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Why ContribForge?
 
-**Use Lovable**
+Open source is powerful, but the entry barrier is high.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Common problems developers face:
 
-Changes made via Lovable will be committed automatically to this repo.
+* Finding beginner-friendly issues
+* Losing track of saved repositories and issues
+* No clear view of contribution progress
+* Hard to showcase open-source work publicly
 
-**Use your preferred IDE**
+ContribForge aims to solve this.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Features (Current & Planned)
 
-Follow these steps:
+### Phase 1: Search & Discovery
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* GitHub repository and issue search
+* Filters by language, difficulty, and labels
+* Highlight `good first issue` opportunities
+* Repository cards with key stats
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Phase 2: Authentication
 
-# Step 3: Install the necessary dependencies.
-npm i
+* GitHub OAuth and Email/Password login
+* Protected dashboard routes
+* User profiles
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Phase 3: Dashboard
+
+* Save and bookmark repos and issues
+* Quick access to saved items
+* Personalized dashboard layout
+
+### Phase 4: Contribution Tracking
+
+* Sync GitHub contributions (PRs, commits, issues)
+* Progress charts and contribution history
+* Streaks and milestones
+
+### Phase 5: Public Portfolio
+
+* Shareable public profile
+* Contribution showcase
+* Activity graph and badges
+
+---
+
+## Live Demo
+
+[https://contribforge.vercel.app](https://contribforge.vercel.app)
+
+---
+
+## Repository
+
+[https://github.com/abdul-wahab619/ContribForge](https://github.com/abdul-wahab619/ContribForge)
+
+---
+
+## Tech Stack
+
+* Frontend: React + Tailwind CSS
+* Backend: Node.js
+* API: GitHub REST API
+* Auth (planned): GitHub OAuth
+* Deployment: Vercel
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/abdul-wahab619/ContribForge.git
+cd ContribForge
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run Locally
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will run on `http://localhost:3000`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Contributing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Contributions are welcome and encouraged.
 
-## What technologies are used for this project?
+Whether you want to:
 
-This project is built with:
+* Fix bugs
+* Add features
+* Improve UI/UX
+* Enhance documentation
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Please read `CONTRIBUTING.md` before submitting a pull request.
 
-## How can I deploy this project?
+Beginner-friendly issues are labeled as `good first issue`.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## Creating Issues
 
-Yes, you can!
+If you have ideas or find bugs:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+* Check existing issues first
+* Use clear titles and descriptions
+* Add screenshots or examples if applicable
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Create an issue here:
+[https://github.com/abdul-wahab619/ContribForge/issues/new](https://github.com/abdul-wahab619/ContribForge/issues/new)
+
+---
+
+## Roadmap
+
+* Advanced issue filtering
+* Contribution analytics
+* Notifications for issue updates
+* Team and organization dashboards
+* Browser extension integration
+
+---
+
+## Philosophy
+
+ContribForge is built with a simple belief:
+
+Open source should be accessible.
+Tracking contributions should be effortless.
+Developers should feel motivated, not overwhelmed.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+## Acknowledgements
+
+Inspired by the open-source community and built to give back to it.
+
+If you find this project useful, consider giving it a star.
