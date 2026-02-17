@@ -3,7 +3,7 @@ import { useBookmarks } from "@/hooks/useBookmarks";
 import { useContributions, useSyncStatus } from "@/hooks/useContributions";
 import { BookmarkCard } from "./BookmarkCard";
 import { ActivityHeatmap } from "./ActivityHeatmap";
-import { Bookmark, GitFork, AlertCircle, ArrowRight, GitPullRequest, GitCommit } from "lucide-react";
+import { Bookmark, GitFork, AlertCircle, ArrowRight, GitPullRequest, GitCommit, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -28,10 +28,18 @@ export function DashboardOverview() {
         <h2 className="text-2xl font-bold text-foreground">
           Hey, {displayName} 👋
         </h2>
-        <p className="text-muted-foreground mt-1">
+      <p className="text-muted-foreground mt-1">
           Here's an overview of your saved open source projects.
         </p>
       </div>
+      {user?.user_metadata?.user_name && (
+        <Link to={`/u/${user.user_metadata.user_name}`}>
+          <Button variant="hero" size="lg" className="gap-2">
+            <ExternalLink className="h-4 w-4" />
+            View Portfolio
+          </Button>
+        </Link>
+      )}
 
       {/* Stats Cards */}
       <div className="grid sm:grid-cols-3 lg:grid-cols-5 gap-4">
