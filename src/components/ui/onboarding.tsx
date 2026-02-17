@@ -35,7 +35,7 @@ const STEPS = [
 
 
 export default function Onboarding() {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [step, setStep] = useState(0);
 
     const skipRef = useRef<HTMLButtonElement>(null);
@@ -59,7 +59,7 @@ export default function Onboarding() {
     // Handle keyboard navigation: Arrow Left/Right for Back/Next, focus buttons on step change
     useEffect(() => {
         if (!open || focusedStep.current === step) return;
-        
+
         const target = step === 0 ? skipRef.current : nextRef.current;
         target?.focus();
         focusedStep.current = step;
