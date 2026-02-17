@@ -6,11 +6,28 @@ import { ActivityHeatmap } from "./ActivityHeatmap";
 import { Bookmark, GitFork, AlertCircle, ArrowRight, GitPullRequest, GitCommit, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 export function DashboardOverview() {
   const { user } = useAuth();
   const { data: bookmarks, isLoading } = useBookmarks();
   const { data: contributions } = useContributions();
+
+  const { data: profile } = useQuery({
+    queryKey: ["profile", user?.id],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("github_username")
+        .eq("id", user!.id)
+        .maybeSingle();
+      return data;
+    },
+    enabled: !!user?.id,
+  });
+
+  const githubUsername = user?.user_metadata?.user_name || profile?.github_username;
 
   const repoCount = bookmarks?.filter((b) => b.type === "repo").length ?? 0;
   const issueCount = bookmarks?.filter((b) => b.type === "issue").length ?? 0;
@@ -32,8 +49,8 @@ export function DashboardOverview() {
           Here's an overview of your saved open source projects.
         </p>
       </div>
-      {user?.user_metadata?.user_name && (
-        <Link to={`/u/${user.user_metadata.user_name}`}>
+      {githubUsername && (
+        <Link to={`/u/${githubUsername}`}>
           <Button variant="hero" size="lg" className="gap-2">
             <ExternalLink className="h-4 w-4" />
             View Portfolio
