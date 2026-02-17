@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import Portfolio from "./pages/Portfolio";
+import Onboarding from "./components/ui/onboarding";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <Onboarding />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
