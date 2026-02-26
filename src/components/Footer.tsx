@@ -1,4 +1,4 @@
-import { Github, Twitter } from "lucide-react";
+import { Github, Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -29,14 +29,21 @@ export function Footer() {
           {/* Social */}
           <div className="flex items-center gap-4">
             <a 
-              href="#" 
+              href="https://github.com/abdul-wahab619/contribforge" 
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
               <Github className="h-5 w-5" />
             </a>
             <a 
-              href="#" 
+              href="https://www.linkedin.com/in/abdul-wahab-aw/" 
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Linkedin"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a 
+              href="https://x.com/mrabdulwahabaw" 
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Twitter"
             >
